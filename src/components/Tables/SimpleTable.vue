@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import { establishmentPath } from "@/http/ApiRouter";
+import BaseRequest from "@/http/request";
+
 export default {
   name: "simple-table",
+  mixins: [BaseRequest],
   props: {
     tableHeaderColor: {
       type: String,
@@ -60,8 +64,9 @@ export default {
           country: "Chile",
           city: "Gloucester"
         }
-      ]
+      ],
+      entity: []
     };
-  }
+  },
 };
 </script>

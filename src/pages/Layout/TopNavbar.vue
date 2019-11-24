@@ -80,6 +80,12 @@
               <i class="material-icons">person</i>
               <p class="hidden-lg hidden-md">Profile</p>
             </md-list-item>
+
+             <md-list-item @click="exit">
+              <i class="material-icons">close</i>
+              <p class="hidden-lg hidden-md">Sair</p>
+            </md-list-item>
+            
           </md-list>
         </div>
       </div>
@@ -88,6 +94,11 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import {
+  tokenStore
+} from '@/components/extra/LocalStorage'
+
 export default {
   data() {
     return {
@@ -107,7 +118,16 @@ export default {
   methods: {
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
-    }
+    },
+    exit() {
+      this.$router.replace("login", () => {
+        tokenStore.set(null);
+        this.logout();
+      });
+    },
+    ...mapActions({
+      logout: "logout"
+    })
   }
 };
 </script>
