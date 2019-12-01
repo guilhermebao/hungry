@@ -8,7 +8,7 @@ import {
 
 export const setTokenHeader = (token) => {
   if (HTTP)
-    HTTP.defaults.headers.common['validator'] = token
+    HTTP.defaults.headers.common['token'] = token
 }
 
 export const HTTP = axios.create({})
