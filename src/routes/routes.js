@@ -129,7 +129,7 @@ const router = new Router({
 // }
 
 router.beforeEach((to, from, next) => {
-  if (!store.getters.isLogged && (to.name === 'login' || to.name === 'forgotpassword')) {
+  if (!store.getters.isLogged && (to.name === 'login' || to.name === 'account')) {
     next()
     store.dispatch('endLoading')
 
@@ -137,21 +137,20 @@ router.beforeEach((to, from, next) => {
     store.dispatch('startLoading')
 
     const localToken = tokenStore.get()
-
-    if (localToken) {
+    console.log('token', localToken)
+    if (localToken && localToken != null) {
       // validateToken(localToken).then(response => {
       //   store.dispatch('setLogin', {
       //     user: response.data,
       //     token: localToken
       //   })
-
-      //   socket(response.data.id, response.data.private, response.data.global)
       //   next('/')
       //   store.dispatch('endLoading')
       // }).catch(error => {
 
       //   next('/login')
       // })
+      console.log('token entrou')
       next()
       store.dispatch('endLoading')
     } else {

@@ -8,7 +8,7 @@ import {
 
 export const setTokenHeader = (token) => {
   if (HTTP)
-    HTTP.defaults.headers.common['token'] = token
+    HTTP.defaults.headers.common['Authorization'] = 'Bearer ' + token
 }
 
 export const HTTP = axios.create({})

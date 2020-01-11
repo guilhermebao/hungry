@@ -4,9 +4,9 @@ export default {
 
 export const tokenStore = {
 	get: () => {
-		return localStorage.getItem('validator');
+		return localStorage.getItem('Authorization');
 	},
 	set: (token) => {
-		localStorage.setItem('validator', token);
+		localStorage.setItem('Authorization', token);
 	}
 }
